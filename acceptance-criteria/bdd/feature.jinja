@@ -9,7 +9,8 @@ Feature: {{ data.name }}
       {%+ endfor -%}
     {%- endif -%}
     {%- endfor -%}
-    {%- endif -%}
+    Given specified objects, workspaces and agents are available
+  {%- endif -%}
 
 {% for scenario_data in data.criteria %}
   Scenario Outline: {{ scenario_data.name }}
