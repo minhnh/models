@@ -1,4 +1,16 @@
 Feature: {{ data.name }}
+  {% if 'background' in data %}
+  Background:
+    {%- for bg_name, bg_data in data.background.data.items() -%}
+    {%- if bg_data.type == 'bdd:ScenarioHasObjects' +%}
+    Given a set of objects
+      | name |
+      {% for obj_data in bg_data.objects %}| {{ obj_data.name }} |
+      {%+ endfor -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
+
 {% for scenario_data in data.criteria %}
   Scenario Outline: {{ scenario_data.name }}
     {% for clause in scenario_data.given_clauses %}

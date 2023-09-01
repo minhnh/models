@@ -8,12 +8,17 @@
         "hbrs-agents": "https://hbrs-sesame.github.io/models/agents/brsu/",
         "hbrs-env": "https://hbrs-sesame.github.io/models/environments/brsu/",
         "avl-env": "https://hbrs-sesame.github.io/models/environments/avl/",
+        "isaac-agents": "https://hbrs-sesame.github.io/models/agents/isaac-sim/",
 
         "bdd": "https://hbrs-sesame.github.io/metamodels/acceptance-criteria/bdd#",
         "of-clause": { "@id": "bdd:of-clause", "@type": "@id" },
         "has-criteria": { "@id":"bdd:has-criteria", "@type": "@id" },
         "of-scenario":{ "@id": "bdd:of-scenario", "@type": "@id" },
         "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
+        "has-background": { "@id": "bdd:has-background", "@type": "@id" },
+
+        "env": "https://hbrs-sesame.github.io/metamodels/environment#",
+        "has-object": { "@id": "env:has-object", "@type": "@id" },
 
         "task": "https://hbrs-sesame.github.io/metamodels/task#",
         "has-variation": { "@id": "task:has-variation", "@type": "@id" },
@@ -25,9 +30,20 @@
 
     "@graph": [
         {
+            "@id": "pickup-objects", "@type": "bdd:ScenarioHasObjects",
+            "of-scenario": "tmpl:scenario-pick",
+            "has-object": [ "hbrs-env:box", "hbrs-env:bottle", "avl-env:cylindrical1", "hbrs-env:ball" ]
+        },
+        {
+            "@id": "pickup-agents", "@type": "bdd:ScenarioHasAgents",
+            "of-scenario": "tmpl:scenario-pick",
+            "has-agent": [ "isaac-agents:panda" ]
+        },
+
+        {
             "@id": "obj-variation", "@type": "task:Variation",
             "of-variable": "tmpl:pick-object",
-            "can-be": [ "hbrs-env:box", "hbrs-env:bottle", "avl-env:cylindrical1" ]
+            "can-be": [ "hbrs-env:ball", "hbrs-env:bottle", "avl-env:cylindrical1" ]
         },
         {
             "@id": "ws-variation", "@type": "task:Variation",
@@ -37,11 +53,12 @@
         {
             "@id": "robot-variation", "@type": "task:Variation",
             "of-variable": "tmpl:pick-robot",
-            "can-be": [ "hbrs-agents:kinova1", "hbrs-agents:kinova2" ]
+            "can-be": [ "hbrs-agents:kinova1", "isaac-agents:panda" ]
         },
         {
             "@id": "scenario-pick-1-arm", "@type": "bdd:ScenarioVariant",
             "of-scenario": "tmpl:scenario-pick",
+            "has-background": [ "pickup-objects", "pickup-agents" ],
             "has-variation": [
                 "obj-variation", "ws-variation", "robot-variation"
             ]
@@ -49,6 +66,7 @@
         {
             "@id": "scenario-approach-1-arm", "@type": "bdd:ScenarioVariant",
             "of-scenario": "tmpl:scenario-approach",
+            "has-background": [ "pickup-objects", "pickup-agents" ],
             "has-variation": [
                 "obj-variation", "ws-variation", "robot-variation"
             ]
