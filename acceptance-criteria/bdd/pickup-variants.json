@@ -20,6 +20,9 @@
         "env": "https://hbrs-sesame.github.io/metamodels/environment#",
         "has-object": { "@id": "env:has-object", "@type": "@id" },
 
+        "agn": "https://hbrs-sesame.github.io/metamodels/agent#",
+        "has-agent": { "@id": "agn:has-agent", "@type": "@id" },
+
         "task": "https://hbrs-sesame.github.io/metamodels/task#",
         "has-variation": { "@id": "task:has-variation", "@type": "@id" },
         "can-be": { "@id": "task:can-be", "@type": "@id" },
