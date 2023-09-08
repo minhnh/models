@@ -1,0 +1,111 @@
+{
+    "@context": [
+        "https://comp-rob2b.github.io/metamodels/geometry/coordinates.json",
+        "https://comp-rob2b.github.io/metamodels/geometry/spatial-relations.json",
+        "https://comp-rob2b.github.io/metamodels/qudt.json",
+        {
+            "@base": "https://hbrs-sesame.github.io/models/simulation/pickup/",
+            "sim": "https://hbrs-sesame.github.io/metamodels/simulation#",
+
+            "env": "https://hbrs-sesame.github.io/metamodels/environment#",
+            "of-object": { "@id": "env:of-object", "@type": "@id" },
+
+            "geom-sesame": "https://hbrs-sesame.github.io/metamodels/geometry#",
+            "env-brsu": "https://hbrs-sesame.github.io/models/environments/brsu/",
+            "env-avl": "https://hbrs-sesame.github.io/models/environment/avl/",
+
+            "prob": "https://hbrs-sesame.github.io/metamodels/variation/probability#",
+            "from-distribution": { "@id": "prob:from-distribution", "@type": "@id" }
+        }
+    ],
+    "@graph": [
+        {
+            "@id": "sim-box", "@type": "sim:SimulatedObject",
+            "of-object": "env-brsu:box"
+        },
+        {
+            "@id": "sim-ball", "@type": "sim:SimulatedObject",
+            "of-object": "env-brsu:ball"
+        },
+        {
+            "@id": "sim-bottle", "@type": "sim:SimulatedObject",
+            "of-object": "env-brsu:bottle"
+        },
+        {
+            "@id": "sim-battery-cyl", "@type": "sim:SimulatedObject",
+            "of-object": "env-avl:cylindrical1"
+        },
+
+        {
+            "@id": "uniform-position-xyz",
+            "@type": [ "prob:Distribution", "prob:Continuous", "prob:Uniform" ],
+            "prob:dimension": 3,
+            "prob:lower-bound": [ 0.2, -0.5, 0.1 ],
+            "prob:upper-bound": [ 0.4, 0.5, 0.3 ]
+        },
+        {
+            "@id": "uniform-rotation",
+            "@type":  [ "prob:Distribution", "prob:Continuous", "prob:UniformRotation" ]
+        },
+
+        {
+            "@id": "sampled-box-position",
+            "@type": [ "prob:SampledQuantity", "3D", "Euclidean", "PositionReference", "PositionCoordinate", "VectorXYZ" ],
+            "unit": "M",
+            "of-position": "box-position",
+            "from-distribution": "uniform-position-xyz"
+        },
+        {
+            "@id": "sampled-box-orientation",
+            "@type": [ "prob:SampledQuantity", "OrientationReference", "OrientationCoordinate", "DirectionCosineXYZ" ],
+            "unit": "M",
+            "of-orientation": "box-orientation",
+            "from-distribution": "uniform-rotation"
+        },
+
+        {
+            "@id": "sampled-ball-position",
+            "@type": [ "prob:SampledQuantity", "3D", "Euclidean", "PositionReference", "PositionCoordinate", "VectorXYZ" ],
+            "unit": "M",
+            "of-position": "ball-position",
+            "from-distribution": "uniform-position-xyz"
+        },
+        {
+            "@id": "sampled-ball-orientation",
+            "@type": [ "prob:SampledQuantity", "OrientationReference", "OrientationCoordinate", "DirectionCosineXYZ" ],
+            "unit": "M",
+            "of-orientation": "ball-orientation",
+            "from-distribution": "uniform-rotation"
+        },
+
+        {
+            "@id": "sampled-bottle-position",
+            "@type": [ "prob:SampledQuantity", "3D", "Euclidean", "PositionReference", "PositionCoordinate", "VectorXYZ" ],
+            "unit": "M",
+            "of-position": "bottle-position",
+            "from-distribution": "uniform-position-xyz"
+        },
+        {
+            "@id": "sampled-bottle-orientation",
+            "@type": [ "prob:SampledQuantity", "OrientationReference", "OrientationCoordinate", "DirectionCosineXYZ" ],
+            "unit": "M",
+            "of-orientation": "bottle-orientation",
+            "from-distribution": "uniform-rotation"
+        },
+
+        {
+            "@id": "sampled-battery-cyl-position",
+            "@type": [ "prob:SampledQuantity", "3D", "Euclidean", "PositionReference", "PositionCoordinate", "VectorXYZ" ],
+            "unit": "M",
+            "of-position": "battery-cyl-position",
+            "from-distribution": "uniform-position-xyz"
+        },
+        {
+            "@id": "sampled-battery-cyl-orientation",
+            "@type": [ "prob:SampledQuantity", "OrientationReference", "OrientationCoordinate", "DirectionCosineXYZ" ],
+            "unit": "M",
+            "of-orientation": "battery-cyl-orientation",
+            "from-distribution": "uniform-rotation"
+        }
+    ]
+}

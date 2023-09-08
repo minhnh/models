@@ -1,0 +1,75 @@
+{
+    "@context": [
+        "https://comp-rob2b.github.io/metamodels/geometry/structural-entities.json",
+        {
+            "brsu": "https://hbrs-sesame.github.io/models/environments/brsu/",
+            "env": "https://hbrs-sesame.github.io/metamodels/environment#",
+            "of-object": { "@id": "env:of-object", "@type": "@id" }
+        }
+    ],
+    "@graph": [
+        { "@id": "brsu:box-origin", "@type": "Point" },
+        { "@id": "brsu:box-com", "@type": "Point" },
+        {
+            "@id": "brsu:box-frame", "@type": "Frame",
+            "origin": "brsu:box-origin"
+        },
+        {
+            "@id": "brsu:box-body", "@type": [ "RigidBody", "SimplicialComplex", "env:RigidObject" ],
+            "of-object": "brsu:box",
+            "simplices": [
+                "brsu:box-origin",
+                "brsu:box-frame",
+                "brsu:box-com"
+            ]
+        },
+
+        { "@id": "brsu:ball-origin", "@type": "Point" },
+        { "@id": "brsu:ball-com", "@type": "Point" },
+        {
+            "@id": "brsu:ball-frame", "@type": "Frame",
+            "origin": "brsu:ball-origin"
+        },
+        {
+            "@id": "brsu:ball-body", "@type": [ "RigidBody", "SimplicialComplex", "env:RigidObject" ],
+            "of-object": "brsu:ball",
+            "simplices": [
+                "brsu:ball-origin",
+                "brsu:ball-frame",
+                "brsu:ball-com"
+            ]
+        },
+
+        { "@id": "brsu:bottle-origin", "@type": "Point" },
+        { "@id": "brsu:bottle-com", "@type": "Point" },
+        {
+            "@id": "brsu:bottle-frame", "@type": "Frame",
+            "origin": "brsu:bottle-origin"
+        },
+        {
+            "@id": "brsu:bottle-body", "@type": [ "RigidBody", "SimplicialComplex", "env:RigidObject" ],
+            "of-object": "brsu:bottle",
+            "simplices": [
+                "brsu:bottle-origin",
+                "brsu:bottle-frame",
+                "brsu:bottle-com"
+            ]
+        },
+
+        { "@id": "brsu:dining-table-origin", "@type": "Point" },
+        { "@id": "brsu:dining-table-com", "@type": "Point" },
+        {
+            "@id": "brsu:dining-table-frame", "@type": "Frame",
+            "origin": "brsu:dining-table-origin"
+        },
+        {
+            "@id": "brsu:dining-table-body", "@type": [ "RigidBody", "SimplicialComplex", "env:RigidObject" ],
+            "of-object": "brsu:dining-table",
+            "simplices": [
+                "brsu:dining-table-origin",
+                "brsu:dining-table-frame",
+                "brsu:dining-table-com"
+            ]
+        }
+    ]
+}
