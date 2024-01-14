@@ -60,17 +60,17 @@
         },
 
         {
-            "@id": "pick-object", "@type": "bdd:ScenarioVariable",
+            "@id": "pick-object", "@type": "bdd:ScenarioTaskVariable",
             "of-scenario": [ "scenario-pick", "scenario-approach", "scenario-lift" ],
             "of-task": "task-pick"
         },
         {
-            "@id": "pick-workspace", "@type": "bdd:ScenarioVariable",
+            "@id": "pick-workspace", "@type": "bdd:ScenarioTaskVariable",
             "of-scenario": [ "scenario-pick", "scenario-approach", "scenario-lift" ],
             "of-task": "task-pick"
         },
         {
-            "@id": "pick-robot", "@type": "bdd:ScenarioVariable",
+            "@id": "pick-robot", "@type": "bdd:ScenarioTaskVariable",
             "of-scenario": [ "scenario-pick", "scenario-approach", "scenario-lift" ],
             "of-task": "task-pick"
         },
