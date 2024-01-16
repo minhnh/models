@@ -1,11 +1,11 @@
 Feature: {{ data.name }}
-  {% if 'background' in data %}
+  {% if 'scene' in data %}
   Background:
-    {%- for bg_name, bg_data in data.background.data.items() -%}
-    {%- if bg_data.type == 'bdd:SceneHasObjects' %}
+    {%- for scene_name, scene_data in data.scene.data.items() -%}
+    {%- if scene_data.type == 'bdd:SceneHasObjects' %}
     Given a set of objects
       | name |
-      {% for obj_data in bg_data.objects %}| {{ obj_data.name }} |
+      {% for obj_data in scene_data.objects %}| {{ obj_data.name }} |
       {%+ endfor -%}
     {%- endif -%}
     {%- endfor -%}
