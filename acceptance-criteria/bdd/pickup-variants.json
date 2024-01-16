@@ -15,7 +15,7 @@
         "has-criteria": { "@id":"bdd:has-criteria", "@type": "@id" },
         "of-scenario":{ "@id": "bdd:of-scenario", "@type": "@id" },
         "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
-        "has-background": { "@id": "bdd:has-background", "@type": "@id" },
+        "has-in-scene": { "@id": "bdd:has-in-scene", "@type": "@id" },
 
         "env": "https://hbrs-sesame.github.io/metamodels/environment#",
         "has-object": { "@id": "env:has-object", "@type": "@id" },
@@ -33,12 +33,12 @@
 
     "@graph": [
         {
-            "@id": "pickup-objects", "@type": "bdd:ScenarioHasObjects",
+            "@id": "pickup-objects", "@type": "bdd:SceneHasObjects",
             "of-scenario": "tmpl:scenario-pick",
             "has-object": [ "hbrs-env:box", "hbrs-env:bottle", "avl-env:cylindrical1", "hbrs-env:ball" ]
         },
         {
-            "@id": "pickup-agents", "@type": "bdd:ScenarioHasAgents",
+            "@id": "pickup-agents", "@type": "bdd:SceneHasAgents",
             "of-scenario": "tmpl:scenario-pick",
             "has-agent": [ "isaac-agents:panda" ]
         },
@@ -61,7 +61,7 @@
         {
             "@id": "scenario-pick-1-arm", "@type": "bdd:ScenarioVariant",
             "of-scenario": "tmpl:scenario-pick",
-            "has-background": [ "pickup-objects", "pickup-agents" ],
+            "has-in-scene": [ "pickup-objects", "pickup-agents" ],
             "has-variation": [
                 "obj-variation", "ws-variation", "robot-variation"
             ]
@@ -69,7 +69,7 @@
         {
             "@id": "scenario-approach-1-arm", "@type": "bdd:ScenarioVariant",
             "of-scenario": "tmpl:scenario-approach",
-            "has-background": [ "pickup-objects", "pickup-agents" ],
+            "has-in-scene": [ "pickup-objects", "pickup-agents" ],
             "has-variation": [
                 "obj-variation", "ws-variation", "robot-variation"
             ]

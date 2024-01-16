@@ -2,7 +2,7 @@ Feature: {{ data.name }}
   {% if 'background' in data %}
   Background:
     {%- for bg_name, bg_data in data.background.data.items() -%}
-    {%- if bg_data.type == 'bdd:ScenarioHasObjects' %}
+    {%- if bg_data.type == 'bdd:SceneHasObjects' %}
     Given a set of objects
       | name |
       {% for obj_data in bg_data.objects %}| {{ obj_data.name }} |
